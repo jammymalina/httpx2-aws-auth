@@ -8,7 +8,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, AsyncGenerator, Generator
 from urllib.parse import quote
 
-import httpx
+import httpx2 as httpx
 
 
 @dataclass

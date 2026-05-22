@@ -1,6 +1,6 @@
 from typing import Any
 
-import httpx
+import httpx2 as httpx
 import pytest
 
 from httpx2_aws_auth import AwsCredentials, AwsSigV4Auth

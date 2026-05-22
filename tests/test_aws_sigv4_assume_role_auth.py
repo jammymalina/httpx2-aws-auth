@@ -1,7 +1,7 @@
 import typing
 from datetime import datetime, timedelta, timezone
 
-import httpx
+import httpx2 as httpx
 import pytest
 from pytest_mock import MockerFixture
 
