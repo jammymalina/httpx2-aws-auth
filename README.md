@@ -9,7 +9,7 @@ This module provides AWS Signature Version 4 (SigV4) authentication for HTTPX2 (
 
 ## Features
 
-- Simple integration with HTTPX
+- Simple integration with HTTPX2 (pydantic)
 - Support for both synchronous and asynchronous authentication
 - AWS SigV4 signing for API requests
 - IAM Role assumption with configurable duration
@@ -29,8 +29,8 @@ pip install httpx2-aws-auth
 ### Basic AWS Credentials Authentication
 
 ```python
-import httpx
-from httpx_aws_auth import AwsSigV4Auth, AwsCredentials
+import httpx2
+from httpx2_aws_auth import AwsSigV4Auth, AwsCredentials
 
 # Create AWS credentials
 credentials = AwsCredentials(
@@ -39,7 +39,7 @@ credentials = AwsCredentials(
 )
 
 # Create an authenticated client
-client = httpx.Client(
+client = httpx2.Client(
     auth=AwsSigV4Auth(
         credentials=credentials,
         region='us-west-2',
@@ -55,13 +55,14 @@ response = client.get('https://your-api-endpoint.com')
 
 ```python
 import boto3
-from httpx_aws_auth import AwsSigV4AssumeRoleAuth
+import httpx2
+from httpx2_aws_auth import AwsSigV4AssumeRoleAuth
 
 # Create AWS session
 session = boto3.Session()
 
 # Create an authenticated client with role assumption
-client = httpx.Client(
+client = httpx2.Client(
     auth=AwsSigV4AssumeRoleAuth(
         region='us-west-2',
         role_arn='arn:aws:iam::123456789012:role/YourRole',
@@ -78,13 +79,14 @@ response = client.get('https://your-api-endpoint.com')
 
 ```python
 import aioboto3
-from httpx_aws_auth import AwsSigV4AssumeRoleAuth
+import httpx2
+from httpx2_aws_auth import AwsSigV4AssumeRoleAuth
 
 # Create async AWS session
 async_session = aioboto3.Session()
 
 # Create an authenticated async client with role assumption
-async_client = httpx.AsyncClient(
+async_client = httpx2.AsyncClient(
     auth=AwsSigV4AssumeRoleAuth(
         region='us-west-2',
         role_arn='arn:aws:iam::123456789012:role/YourRole',
@@ -118,6 +120,6 @@ async with async_client as client:
 
 ## Dependencies
 
-- HTTPX
+- HTTPX2
 - boto3 (for synchronous authentication)
 - aioboto3 (for asynchronous authentication)
